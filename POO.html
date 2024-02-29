@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POO</title>
+  </head>
+  <body>
+    <h1>Programación orientada a objetos en JS</h1>
+
+    <h2>Recomendaciones</h2>
+
+    <ul>
+      <li>
+        No se recomienda que los métodos de los objetos estén dentro de la
+        función constructora, sino que estén dentro del prototipo de la función
+        constructora, esto para evitar la duplicidad o repetición por cada
+        objeto que se cree. Esto ayuda al rendimiento de la aplicación.
+      </li>
+    </ul>
+
+    <script>
+      /*
+            Clases - Modelo a seguir
+            Objetos - Instancia de una clase. Tienen:
+                -Atributos: es una característica o propiedad del objeto (Variables dentro de un objeto)
+                -Métodos: acciones que un objeto puede realizar (funciones dentro de un objeto)
+        */
+
+      // const loro = {
+      // 	nombre: `condorito`,
+      // 	edad: 27,
+      // 	silvar() {
+      // 		console.log(`Silvido`)
+      // 	}
+      // };
+      // console.log(loro);
+      // const coneja = {
+      // 	nombre: `Lola Bunny`,
+      // 	edad: 27,
+      // 	silvar() {
+      // 		console.log(`Soy la novia de Bugs Bunny`)
+      // 	}
+      // };
+      // console.log(coneja);
+
+      /** Función constructora **/
+
+      /*No se recomienda asignar los métodos a la función constructora, sino al prototipo*/
+      // function Animal(nombre, genero) {
+      //   /*Atributos*/
+      //   this.nombre = nombre;
+      //   this.genero = genero;
+      // }
+
+      /*Métodos asignado a prototipo de la función constructora*/
+      // Animal.prototype.sonar = function () {
+      //   console.log(`Hago sonidos porque estoy vivo`);
+      // };
+
+      // Animal.prototype.saludar = function () {
+      //   console.log(`Hola`);
+      // };
+
+      /*Herencia prototípica*/
+
+      // function Perro(nombre, genero, tamanio) {
+      /*Se invoca el método constructor de la clase padre*/
+      // this.super = Animal; //Clase padre
+      /*Se ejecuta el método super (que recibe dos parámetros)*/
+      // this.super(nombre, genero);
+
+      /*Propiedad adicional exclusiva de la función constructora Perro*/
+      // this.tamanio = tamanio;
+      // }
+
+      /*Herencia*/
+      /*Se da la instrucción de que el prototipo Perro sea una instancia de Animal*/
+      /*Perro Herreda de animal*/
+      // Perro.prototype = new Animal();
+      /*Se da la instrucción de que se va a utilizar el constructor no de */
+      // Perro.prototype.constructor = Perro;
+
+      /*Sobreescritura-Sobrecarga de métodos de la clase padre en la clase hija*/
+      // Perro.prototype.sonar = function () {
+      //   console.log(`Soy un perro y mi sonido es un ladrido`)
+      // }
+
+      // Perro.prototype.ladrar = function(){
+      //   console.log(`Guau Guau!!!`)
+      // }
+
+      // const snoopy = new Perro(`Snoopy`, `Macho`, `Mediano`),
+      //   lola_bunny = new Animal(`Lola Bunny`, `Hembra`);
+
+      // console.log(snoopy);
+      // snoopy.saludar();
+      // snoopy.sonar();
+      // snoopy.ladrar();
+      // console.log(lola_bunny);
+      // lola_bunny.saludar();
+      // lola_bunny.sonar();
+
+      /*POO en JS con en clases*/
+
+      class Animal {
+        /*El constructor es un método especial que se ejecuta al momento de instanciar la clase*/
+        /*Atributos*/
+        constructor(nombre, genero) {
+          this.nombre = nombre;
+          this.genero = genero;
+        }
+
+        /*Métodos*/
+
+        sonar() {
+          console.log(`Hago sonidos porque estoy vivo`);
+        }
+
+        saludar() {
+          console.log(`Hola, me llamo ${this.nombre}`);
+        }
+      }
+
+      class Perro extends Animal {
+        constructor(nombre, genero, tamanio) {
+          /*Super es un método que manda a llamar al constructor de la clase padre*/
+          super(nombre, genero);
+
+          this.tamanio = tamanio;
+          this.raza = null;
+        }
+
+        sonar() {
+          console.log(`Soy un perro y mi sonido es un ladrido`);
+        }
+
+        ladrar() {
+          console.log(`Guau Guau!`);
+        }
+
+        /*Los métodos estáticos, son aquellos que pueden ejecutarse sin necesidad de instanciar la clase*/
+
+        static queEres() {
+          console.log(
+            `Los perros somos animales mamíferos, Somos considerados los mejores amigos del hombre`
+          );
+        }
+
+        /*Métodos Getters y Setters*/
+        /*Son métodos especiales que permiten establecer y obtener los valores de los atributos de nuestra clase*/
+
+        get getRaza(){
+          return this.raza;
+        }
+        
+        set setRaza(raza){
+          this.raza = raza;
+        }
+      }
+
+      Perro.queEres();
+
+      const mimi = new Animal(`Mimi`, `Hembra`);
+      const scooby = new Perro(`Scooby`, `Macho`, `Gigante`);
+
+      mimi.saludar();
+      mimi.sonar();
+      scooby.saludar();
+      scooby.sonar();
+      scooby.ladrar();
+
+      console.log(mimi);
+      console.log(scooby);
+
+      console.log(scooby.getRaza);
+      scooby.setRaza = `Gran Danés`
+      console.log(scooby.getRaza);
+    </script>
+  </body>
+</html>

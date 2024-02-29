@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamientos de JavaScript</title>
+  </head>
+  <body>
+    <h1>Fundamentos de JavaScript</h1>
+
+    <h2>Anotaciones generales</h2>
+
+    <ul>
+      <li>
+        Nunca utilizar la palabra clave <strong>var</strong> para declarar
+        variables. Utilizar siempre la palabra clave <strong>let</strong> ya que
+        ésta respeta el ámbito donde se declara la variable
+      </li>
+      <br />
+      <li>
+        Las <strong>constantes</strong> tienen que ser declaradas e
+        inicializadas en la misma línea de código. Las
+        <strong> variables </strong> sí pueden ser declaradas y ser
+        inicializadas después. Las <strong> constantes </strong> trabajan de
+        manera diferente dependiendo del tipo de dato que se utilice (primitivo
+        o compuesto)
+      </li>
+    </ul>
+
+    <h2>Funciones</h2>
+
+    <p>Existes varios tipos de funciones:</p>
+
+    <ul>
+      <li>
+        <h4>Funciones declaradas:</h4>
+        <p>
+          Las funciones declaradas se pueden invocar en cualquier parte del
+          código, inclusive antes de haberla declarado Las funciones declaradas
+          son las que tienen antepuesta la palabra <strong>function</strong>
+        </p>
+      </li>
+      <li>
+        <h4>Funciones anónimas/expresada</h4>
+        <p>
+          Las funciones anónimas/expresada son aquellas que se le asignan como
+          valor a una variable o constante. <br />
+          Estas también llevan la palabra <strong>function</strong>, pero no
+          pueden ser invocadas antes de ser declaradas.
+        </p>
+      </li>
+
+      <li>
+        <h4>Funciones flecha: (=>)</h4>
+        <p></p>
+      </li>
+    </ul>
+
+    <h2>Arreglos en JS</h2>
+
+    <p>
+      Los arreglos en JS son colecciones de elementos en una variable o
+      constante. <br />
+      Estos pueden guardar distintos tipos de datos en cada posición. No olvidar
+      que el índice de los arreglos comienza con el cero (0)
+    </p>
+
+    <script>
+      var hola = "Hola Mundo";
+      console.log(hola);
+      console.log(window);
+
+      /*Ámbito de bloque*/
+
+      let musica = "Bachata";
+      console.log(`Variable antes del bloque ${musica}`);
+      {
+        let musica = "Salsa";
+        console.log(`Variable dentro del bloque ${musica}`);
+      }
+      console.log(`Variable después del bloque ${musica}`);
+
+      /*Constantes*/
+
+      const PI = 3.1416;
+      const nueve = 9;
+
+      console.log(PI);
+
+      const objeto = {
+        nombre: "Alexander",
+        edad: 28,
+        profesion: "bailarín",
+      };
+
+      const colores = ["Blanco", "Negro", "Azul"];
+
+      /*Cadenas de texto*/
+
+      let lorem =
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo omnis facere dicta voluptatum alias rem! Ullam ipsam sint, incidunt asperiores ut perspiciatis aut est ea quod quaerat alias voluptas commodi.";
+
+      let nombre = "Alexander";
+      let apellido = "Orlas";
+      let apellido_dos = "Gutierrez";
+      let saludo = new String(`Hola`); 
+
+      console.log(`${saludo}, ${nombre} ${apellido}`);
+      console.log(
+        `${saludo.toLowerCase()}, ${nombre.toUpperCase()} ${
+          apellido.length
+        } ${apellido_dos.trim()}`
+      );
+
+      console.log(lorem.split(" "));
+      console.log(lorem.split(","));
+
+      //Las backtick me permiten respetar el formato en el que ponga la definición de la variable
+      let ul = `
+        <ul>
+          <li> Primavera </li>
+          <li> Verano </li>
+          <li> Otoño </li>
+          <li> Invierno </li>
+        </ul>
+      `;
+
+      console.log(ul);
+
+      /*Números en JS*/
+
+      let dos_2 = 2;
+      let cinco = new Number(5);
+      let decimal = 7.2;
+      let segundo_decimal = "5.9";
+
+      console.log(dos_2, cinco);
+      console.log(decimal.toFixed(1));
+      console.log(parseInt(decimal));
+      console.log(
+        `${Math.round(
+          parseFloat(decimal) + parseFloat(segundo_decimal)
+        ).toFixed(1)}`
+      );
+
+      /*Booleanos*/
+      let verdadero = true;
+      let falso = false;
+      let v = Boolean(true);
+      let f = Boolean(false);
+
+      console.log(verdadero, falso, v, f);
+      console.log(typeof verdadero, typeof falso);
+      console.log(Boolean(0));
+      console.log(Boolean(-7));
+      console.log(Boolean(""));
+      console.log(Boolean(" "));
+
+      /* **********     Curso JavaScript: 9. undefined, null & NaN - #jonmircha     ********** */
+
+      //undefined indica que no se ha inicializado una variable y que el valor está ausente
+      let indefinida;
+      console.log(indefinida);
+
+      //null es un valor especial que indica la ausencia de un valor
+      let nulo = null;
+      console.log(null);
+
+      //NaN - Not a Number
+      let noEsUnNumero = "hola" * 3.7;
+      console.log(noEsUnNumero);
+
+      /********** FUNCIONES *************/
+
+      //Funciones declaradas
+
+      function estoEsUnaFuncion() {
+         console.log("Uno")
+         console.log("Dos")
+         console.log("Tres")
+      }
+
+       estoEsUnaFuncion();
+
+      function devuelveValor(a, b) {
+        return a + b;
+      }
+
+      function devuelveString(a) {
+        return `Hola ${a}`;
+      }
+
+      console.log(devuelveValor(5, 3));
+      console.log(devuelveString("Alex"));
+
+      const funcionExpresada = function () {
+        console.log(
+          `Esta es una función expresada. es decir, una función que se le asignó como valor a una variable. `
+        );
+      };
+
+      /*******Arreglos en JS*******/
+
+      const a = [];
+      const b = [1, true, `a`, 50, [49, `Alex`, false]];
+
+      console.log(a);
+      console.log(b);
+      console.log(b.length);
+
+      console.log(b[4][1]);
+
+      const c = Array.of("X", "Y", "Z", 9, 8, 7);
+
+      console.log(c);
+
+      const d = Array(50).fill(true)
+      console.log(d)
+
+      const e = new Array();
+      console.log(e)
+
+      const g = new Array('50', 50, false, `Alex`, true)
+      console.log(g)
+
+      const colores_2 = [`Rojo`, `Verde`, `Azul`]
+      console.log(colores_2)
+
+      colores_2.push(`Blanco`)
+      console.log(colores_2)
+
+      colores_2.pop();
+      console.log(colores_2)
+
+      colores_2.forEach(function(el, index){
+        console.log(`<li id=${index}> ${el}</li>`)
+      });
+
+      /*Objetos*/
+
+      /*Las variables en los objetos son llamados atributos/propiedades. Las funciones se llaman métodos*/
+      const b_dos = {}
+      
+      console.log(b_dos);
+
+      const c_dos = new Object();
+      console.log(c_dos);
+
+      const alex = {
+        nombre: "Alex",
+        apellido: "Orlas",
+        edad: 28,
+        pasatiempos: ["Bailar", "Montar en moto", "Salir", "Rodar"],
+        soltero: true,
+        contacto: {
+          email: "alexorlas96@gmail.com",
+        },
+
+        saludar: function () {
+          console.log(`Hola, mi nombre es: ${this.nombre}`)
+        }
+      }
+
+      alex.saludar();
+      console.log(alex.apellido)
+
+      /* *********Operadores********* */
+
+      /*Aritméticos*/
+
+      /* (+) (-) (*) (/) (% - Módulo) ()*/
+
+      /*Relacionales*/
+      /*(> - Mayor qué) (< - Menor qué) (<= - Menor o igual Qué) (>= - Mayor o igual qué) (=) (==) (===) (!=) (!==)*/
+
+      /*
+        Un igual es asignación de variables
+        Dos iguales (==) es comparación de valores
+        Tres iguales (===) es comparación de valor y de tipo
+      */
+
+      console.log(8 > 9);
+      console.log(9 > 8);
+      console.log(8 >= 9);
+      console.log(9 >= 8);
+      console.log(7 < 7);
+      console.log(7 <= 7);
+
+      /*Incremento y Decremento*/
+      /*
+        (+=)
+        (-=)
+        (/=)
+        (*=)
+
+        Unarios
+
+        (++)
+        (--)
+      */
+
+      let i = 1;
+      i = i + 2;
+
+      /*Lógicos*/
+      /*(&& - And (Se cumplen las dos condiciones)) (|| - OR (Se cumple al menos una condición)) (! (Negación))*/
+
+      /**********ESTRUCTURAS DE CONTROL EN JS**************/
+
+      /*Estructura condicional if-else*/
+
+      /*Operador ternario (? - :)*/
+
+      let edad = 18;
+
+      let eresMayor = edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad";
+
+      console.log(eresMayor);
+
+      /* Switch - Case */
+      
+         /* 0 - Domingo
+         1 - Lunes
+         2 - Martes
+         3 - Miércoles
+         4 - Jueves
+         5 - Viernes
+         6 - Sábado */
+
+      
+
+      dia = 4;
+      switch (dia) {
+        case 0:
+          console.log("domingo");
+          break;
+        case 1:
+          console.log("lunes");
+          break;
+        case 2:
+          console.log("martes");
+          break;
+        case 3:
+          console.log("miércoles");
+          break;
+        case 4:
+          console.log("jueves");
+          break;
+        case 5:
+          console.log("viernes");
+          break;
+        case 6:
+          console.log("sábado");
+          break;
+        default:
+          console.log(`El día no existe`);
+      }
+
+      /*Ciclos en JS*/
+
+      /*
+        1. While
+        2. Do While
+        3. For
+        4. For Each
+      */
+
+      /*Se ejecuta mientras la condición es verdadera*/
+      let counter = 1;
+      console.log(counter);
+      while(counter < 10) {
+        counter++;
+        console.log(counter)
+      }
+
+      /*Asegura que la orden se ejecute al menos una vez*/
+
+      let counter_2 = 1;
+      do {
+        console.info(counter_2)
+        counter_2++
+        console.info(counter_2)
+      } while (counter_2 < 10)
+
+      /*Permite definir una variable dentro del mismo ciclo
+        El código dentro de las llaves se ejecuta hasta ANTES de que se cumpla la función, o sea que no incluye la última iteración*/
+      for (let i=0; i<10; i+=2) {
+        console.log(i);
+      }
+
+      /*For in - Permite recorrer o iterar las propiedades de un objeto*/
+      const persona = {
+        nombre: `Alexander`,
+        apellido: `Orlas`,
+        edad: 25
+      }
+
+      for (const property in persona) {
+        console.log( `Propiedad: ${property}. Valor ${persona[property]}`)
+      }
+
+      /*For of - Al contrario del for in, que solo funciona con objetos, el for of funciona con cualquier objeto iterable*/
+
+      const numbers = [10,20,30,40,50,60,70,80,90]
+      for (const elemento of numbers) {
+        console.log(elemento)
+      }
+
+      const cadena = `Hola Mundo`
+
+      for (const iterator of cadena) {
+        console.log(iterator)
+      }
+
+      /*Manejo de errores en JS con try/catch-finally*/
+
+      try {
+        // console.log("El código del try siempre se ejecuta");
+        noExiste;
+      } catch (error) {
+        // console.log(
+        //   "El código del catch se ejecuta en caso de que haya un error, o se haya lanzado un error al momento de ejecutar el código dentro de las llaves del try"
+        // );
+        console.warn(error);
+      } finally {
+        console.log(
+          "El código del finally se ejecuta SIEMPRE. Sea que haya habido error o no."
+        );
+      }
+
+      try {
+        let num = "re";
+
+        if (isNaN(num)) {
+          throw new Error("El caracter introducido no es un número");
+        }
+      } catch (error) {
+        console.log(`Se produjo el siguiente error ${error}`);
+      }
+      let array = [1,2,3,4,5,6,7,8,9,0]
+
+      for (let counter_2 = 0; counter_2 < array.length; counter_2++) {
+        if(array[counter_2] === 5) {
+          break
+        }
+        console.log(array[counter_2]);
+      }
+
+
+      console.log(`*********Cláusula continue*************`)
+      for (let counter_2 = 0; counter_2 < array.length; counter_2++) {
+        if(array[counter_2] % 2 != 0  ) {
+          continue
+        }
+        console.log(array[counter_2]);
+      }
+
+      /********Destructuring*********/
+
+      let array_numeros = [1,2,3]
+
+      //Sin destructuración:
+
+      let uno = array_numeros[0], dos = array_numeros[1], tres = array_numeros[2];
+
+      console.log(uno,dos,tres)
+
+      //Con destructuración
+
+      const[one,two,three] = array_numeros;
+      console.log(one,two,three);
+
+      const persona_dos = {
+        nombre: `Alex`, 
+        apellido: `Orlas`,
+        edad: `25`
+      }
+
+      let persona_tres = {nombre, apellido, edad} = persona_dos;
+      console.log(nombre, apellido, edad);
+
+      /**********Objetos literales**********/
+
+      let nombre_loro = "Condorito", edad_loro = 27;
+
+      const loro = {
+        nombre_loro: nombre_loro,
+        edad_loro: edad_loro,
+        silvar: function(){
+          console.log(`Silvido`)
+        }
+      }
+      
+      console.log(loro);
+
+      /*Objeto literal*/
+      const loro_dos = {
+        nombre_loro,
+        edad,
+        raza: "Usual",
+        silvar() {
+          console.log `Silvido`
+        }
+      }
+
+      console.log(loro_dos)
+      loro_dos.silvar();
+
+
+      /*Parámetro REST*/
+      function sumar (a,b, ...c) {
+        resultado = a+b;
+
+        c.forEach(function(n){
+          resultado +=n;
+        })
+
+        return resultado;
+      }
+
+      console.log(sumar(1,2));
+      console.log(sumar(1,2,3,4,5,6));
+
+      /*Operador Spread*/
+
+      const array_1 = [1,2,3,4,5], array_2 = [6,7,8,9,0]
+
+      const array_3 = [...array_1,...array_2]
+      console.log(array_3)
+
+      /*Funciones flecha*/
+
+      /*Las funciones flecha son funciones anónimas expresadas*/
+      const saludo_dos = function () {
+        console.info("hola")
+      }
+
+      /*Función flecha*/
+
+      saludo_dos();
+      const saludo_tres = (nombre)  => console.log(`Hola ${nombre}`)
+
+
+      saludo_tres("Alex");
+
+      const sumar_tres = function (a,b) {
+        return a+b;
+      }
+
+      console.log(sumar_tres(3,2));
+
+      const sumar_tres_dos = (a,b) => a+b;
+
+      console.log(sumar_tres_dos(7,9));
+
+      const funcionDeVariasLineas = () => {
+        console.log("Uno")
+        console.log("Dos")
+        console.log("Tres")
+      }
+
+      funcionDeVariasLineas();
+
+      const numeros_tres = [9,0,3,4,5,6,2,2,1,5]
+
+      numeros_tres.forEach((elemento, posicion) => console.log(`Elemento: ${elemento}. Posicion: ${posicion}`))
+    </script>
+  </body>
+</html>

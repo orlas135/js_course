@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Funciones anónimas autoejecutables</h1>
+
+    <p>
+      Las funciones anónimas autoejecutables son aquellas que se ejecutan
+      inmediatamente se abre el documento. Por lo tanto, debido a sus
+      características (no tienen nombre), estas no pueden ser invocadas después.
+    </p>
+
+    <script>
+      (function () {
+        console.log(document);
+      })();
+
+      (function (nombre) {
+        alert(nombre);
+      })(`Alexander`);
+    </script>
+  </body>
+</html>

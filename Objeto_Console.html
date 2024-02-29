@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(console);
+      console.error(`Esto es un error`);
+      console.warn(`Aviso`);
+      console.info(`Mensaje informativo`);
+      console.log(`Registro de lo que ha pasado en la aplicación`);
+      
+      let nombre = `Alex`,
+      apellido = `Orlas`, edad = 27;
+      
+      console.log(nombre, apellido, edad);
+      console.log(`Hola, mi nombre es ${nombre} ${apellido} y tengo ${edad} años`)
+      
+      console.log(`Hola, mi nombre es %s %s y tengo %d años`, nombre, apellido, edad)
+      console.clear();
+
+      console.log(window)
+      console.log(document)
+      console.dir(document)
+      console.clear();
+
+      console.groupCollapsed(`Curso de @jonmircha en YouTube`)
+      console.log(`Curso de JS`)
+      console.log(`Curso de Node JS`)
+      console.log(`Curso de inicios en la programación`)
+      console.log(`Curso de CSS`)
+      console.groupEnd();
+
+      console.log(`Se terminó el grupo`)
+
+      console.clear();
+
+      console.table(Object.entries(console).sort());
+
+      const numeros = [1,2,3,4,5], vocales = [`A`,`E`,`I`,`O`,`U`];
+
+      console.table(numeros);
+      console.table(vocales);
+
+      const perro = {
+        nombre: `Luna`,
+        raza: `unknown`,
+        color: `Café`
+      }
+
+      console.table(perro);
+
+      console.clear();
+
+      console.time(`Cuánto tiempo tarde mi código`);
+
+      const array = Array(1000000)
+
+      for (let index = 0; index < array.length; index++) {
+        array[index] = index;
+      }
+
+      console.timeEnd(`Cuánto tiempo tarde mi código`);
+
+      for (let index = 0; index <= 100; index++) {
+        console.count(`Iteración: `)
+        console.log(index)
+      }
+
+      console.clear();
+
+      let x = 13, y=2, prueba = `Se espera que X siempre sea menor que Y`
+
+      console.assert(x < y, {x, y, prueba})
+    </script>
+  </body>
+</html>
