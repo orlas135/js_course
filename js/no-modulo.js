@@ -1,0 +1,1 @@
+console.log(`Archivo con código ES5`);

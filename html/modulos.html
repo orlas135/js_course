@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulos en JS</title>
+  </head>
+  <body>
+    <h1>Módulos en JS</h1>
+
+    <p>
+      Tener en cuenta que al usar módulos de JS, las variables y las constantes,
+      por cuestión de hoisting, no se pueden exportar por defecto en el mismo
+      renglón en el que fueron declaradas.
+      Si se quieren exportar por defecto, primero se deben declarar y luego expotarse en un renglón diferente.
+    </p>
+
+    <p>Las funciones y las clases si se pueden exportar por defecto en el mismo renglón</p>
+
+    <script src="../js/modulos.js" type="module"></script>
+    <script src="../js/no-modulo.js" nomodule></script>
+  </body>
+</html>
